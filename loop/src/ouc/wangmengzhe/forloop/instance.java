@@ -5,6 +5,7 @@ public class instance {
         //for循环的演示案例
         //求前五个数的和
         sum();
+        System.out.println("------------------");
 
         System.out.println("------------------");
 
