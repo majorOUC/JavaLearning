@@ -71,6 +71,7 @@ public class whileloopdemo {
             }
             System.out.println();
         }
+
     }
 
 }
