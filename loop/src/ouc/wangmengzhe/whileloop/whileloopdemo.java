@@ -20,6 +20,7 @@ public class whileloopdemo {
         System.out.println("-----------------");
         //打印九九乘法表
         multi();
+        //hahahahahatest
     }
 
     public static void whileloop() {
