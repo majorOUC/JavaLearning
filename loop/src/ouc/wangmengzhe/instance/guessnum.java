@@ -11,6 +11,8 @@ public class guessnum {
         //这是另一种生成随机数的方法
         Random random = new Random();
         int num1 = random.nextInt(100)+1;
+
+
         guessnum(num);
     }
 
