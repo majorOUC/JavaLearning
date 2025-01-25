@@ -1,11 +1,16 @@
 package ouc.wangmengzhe.instance;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class guessnum {
     public static void main(String[] args) {
         //设计一个猜数字游戏，随机生成一个1-100之间的数字，从控制台读取用户输入的数字，如果用户输入的数字大于随机数，则输出"猜大了"，如果用户输入的数字小于随机数，则输出"猜小了"。直到用户猜对为止
+        //这是一种生成随机数的方法
         int num = (int)(Math.random()*100+1);
+        //这是另一种生成随机数的方法
+        Random random = new Random();
+        int num1 = random.nextInt(100)+1;
         guessnum(num);
     }
 
