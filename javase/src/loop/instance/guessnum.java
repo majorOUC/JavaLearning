@@ -1,4 +1,4 @@
-package ouc.wangmengzhe.instance;
+package loop.instance;
 
 import java.util.Random;
 import java.util.Scanner;

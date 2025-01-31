@@ -4,8 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/JavaLearning.iml" filepath="$PROJECT_DIR$/.idea/JavaLearning.iml" />
       <module fileurl="file://$PROJECT_DIR$/javase/src/Method/Method.iml" filepath="$PROJECT_DIR$/javase/src/Method/Method.iml" />
-      <module fileurl="file://$PROJECT_DIR$/javase/src/branch/branch.iml" filepath="$PROJECT_DIR$/javase/src/branch/branch.iml" />
-      <module fileurl="file://$PROJECT_DIR$/javase/src/in output/in output.iml" filepath="$PROJECT_DIR$/javase/src/in output/in output.iml" />
       <module fileurl="file://$PROJECT_DIR$/javase/javase.iml" filepath="$PROJECT_DIR$/javase/javase.iml" />
       <module fileurl="file://$PROJECT_DIR$/javase/src/loop/loop.iml" filepath="$PROJECT_DIR$/javase/src/loop/loop.iml" />
     </modules>

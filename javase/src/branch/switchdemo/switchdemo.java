@@ -1,4 +1,4 @@
-package ouc.wangmengzhe.switchdemo;
+package branch.switchdemo;
 
 import java.util.Scanner;
 

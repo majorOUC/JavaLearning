@@ -1,4 +1,4 @@
-package ouc.wangmengzhe.healthcalc;
+package inoutput.healthcalc;
 
 import java.util.Scanner;
 

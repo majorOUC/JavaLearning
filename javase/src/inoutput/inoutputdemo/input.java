@@ -1,4 +1,4 @@
-package ouc.wangmengzhe.inoutputdemo;
+package inoutput.inoutputdemo;
 import java.util.Scanner;
 
 public class input {

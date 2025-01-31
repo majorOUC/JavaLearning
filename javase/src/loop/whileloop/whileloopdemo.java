@@ -1,4 +1,4 @@
-package ouc.wangmengzhe.whileloop;
+package loop.whileloop;
 
 public class whileloopdemo {
     public static void main(String[] args) {

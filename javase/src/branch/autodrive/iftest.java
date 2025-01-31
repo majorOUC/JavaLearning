@@ -1,4 +1,4 @@
-package ouc.wangmengzhe.autodrive;
+package branch.autodrive;
 
 public class iftest {
     public static void main(String[] args) {

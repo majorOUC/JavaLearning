@@ -1,4 +1,4 @@
-package ouc.wangmengzhe.forloop;
+package loop.forloop;
 
 public class instance {
     public static void main(String[] args) {
