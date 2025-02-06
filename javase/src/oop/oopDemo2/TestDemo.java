@@ -6,6 +6,7 @@ public class TestDemo {
     public static void main(String[] args) {
         //类的封装，合理隐藏，合理暴露
         Student zang = new Student();
+        //zang.name = "臧莹莹";   //private 属性，不能直接访问
         zang.setName("臧莹莹");
         zang.setAge(23);
         zang.setSex('女');

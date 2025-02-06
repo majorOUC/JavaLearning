@@ -1,11 +1,11 @@
 package oop.oopDemo2;
 
 public class Student {
-    String name;
-    int age;
-    char sex;
-    int Chinese;
-    int Math;
+    private String name;
+    private int age;
+    private char sex;
+    private int Chinese;
+    private int Math;
 
     public Student(){
     }
