@@ -1,10 +1,12 @@
 package oop.oopextendsDemo;
 
-public class Testextens {
+public class Testextends {
     public static void main(String[] args) {
         //如果子类想访问父类的变量，可以使用super关键字
         Zi zi = new Zi();
         zi.show();
+        zi.method();
+        System.out.println(zi);
     }
 }
 
@@ -15,10 +17,27 @@ class Fu{
     public String getName(){
         return name;
     }
+
+    public void method(){
+        System.out.println("父类的方法执行了");
+    }
 }
 
 class Zi extends Fu{
     String name = "子类的name";
+
+    @Override
+    public void method() {
+        System.out.println("子类的方法执行了");
+    }
+
+    @Override
+    public String toString(){
+        return "Zi{" +
+                "name='" + name + '\'' +
+                ", name='" + super.name + '\'' +
+                '}';
+    }
 
     public void show(){
         String name = "局部变量";
