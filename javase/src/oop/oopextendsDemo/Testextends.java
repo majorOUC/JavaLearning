@@ -31,6 +31,7 @@ class Zi extends Fu{
         System.out.println("子类的方法执行了");
     }
 
+    //方法重写：重写的object类中的toString方法，本身输出对象输出的是对象的地址，更改之后输出对象输出的是对象的内容
     @Override
     public String toString(){
         return "Zi{" +
