@@ -3,7 +3,7 @@ package oop.innerclass;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import oop.oopDemo1.Stu;
+
 
 import java.util.Arrays;
 import java.util.Comparator;
