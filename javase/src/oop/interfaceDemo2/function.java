@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 public class function {
     //方法类，单独集成各种方法
+
+    //总方法：启动循环询问用户是否操作并且持续展示设备状态
+    //同时进入到该设备的个性化操作界面
     public static void op1(Intelligenthomecontrol ihc, Furnature[] f){
         while(true) {
             for (int i = 0; i < f.length; i++) {
@@ -13,17 +16,25 @@ public class function {
             Scanner sc = new Scanner(System.in);
             String op = sc.next();
             switch (op) {
-                case "1":
+                case "1"://这个是空调
                     ihc.press(f[0]);
+                    Airconditioner a = (Airconditioner) f[0];
+                    a.aircon();
                     break;
-                case "2":
+                case "2"://这个是电视
                     ihc.press(f[1]);
+                    TV t = (TV) f[1];
+                    t.tv();
                     break;
-                case "3":
+                case "3"://这个是灯
                     ihc.press(f[2]);
+                    Lamp l = (Lamp) f[2];
+                    l.lamp();
                     break;
-                case "4":
+                case "4"://这个是冰箱
                     ihc.press(f[3]);
+                    Fridge f1 = (Fridge) f[3];
+                    f1.turntemp();
                     break;
                 case "exit":
                     System.out.println("退出系统");
@@ -34,4 +45,6 @@ public class function {
             }
         }
     }
+
+
 }
