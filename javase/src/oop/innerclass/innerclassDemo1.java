@@ -18,6 +18,7 @@ public class innerclassDemo1 {
             }
         };
         start(teacher);
+
         System.out.println("=======================");
         start(student);
     }
