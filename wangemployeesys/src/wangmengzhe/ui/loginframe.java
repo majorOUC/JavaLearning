@@ -1,14 +1,26 @@
 package wangmengzhe.ui;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.*;
+import wangmengzhe.bean.*;
 
-public class loginframe extends JFrame {
+
+public class loginframe extends JFrame implements ActionListener {
     private JTextField usernameField;
     private JPasswordField passwordField;
     private JPanel buttonPanel;
     private JButton loginBtn;
     private JButton registerBtn;
+
+    //创建一个集合容器来存储注册过的用户信息
+    private static ArrayList<User> allUsers = new ArrayList<>();
+
+    static {
+        allUsers.add(new User("wmz", "123456", "梦"));
+    }
 
     public loginframe() {
         // 窗口基础设置
@@ -60,9 +72,12 @@ public class loginframe extends JFrame {
         add(passwordField, gbc);
 
         // 按钮面板
+        //为按钮添加监听器，监听到登录按钮点击事件时，执行登录操作，监听到注册按钮点击事件时，执行注册操作
         buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
         loginBtn = new JButton("登录");
+        loginBtn.addActionListener(this);
         registerBtn = new JButton("注册");
+        registerBtn.addActionListener(this);
 
         // 设置按钮尺寸
         Dimension btnSize = new Dimension(100, 30);
@@ -79,5 +94,47 @@ public class loginframe extends JFrame {
 
         // 窗口可见
         setVisible(true);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        //登录事件
+        //根据用户输入的用户名查找集合中的用户信息，如果找到，则比较密码是否匹配，如果匹配，则登录成功，否则登录失败
+        if (e.getSource() == loginBtn) {
+            String username = usernameField.getText();
+            String password = new String(passwordField.getPassword());
+            User user = findUserByUsername(username);
+            if (user != null && user.getPassword().equals(password)) {
+                new EmployeeManagementSystem(user.getUsername());
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "用户名或密码错误！");
+            }
+        }else{//注册事件，添加用户信息到集合中
+            if (e.getSource() == registerBtn) {
+                String username = usernameField.getText();
+                String password = new String(passwordField.getPassword());
+                if (username.isEmpty() || password.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "用户名或密码不能为空！");
+                } else {//请求用户输入一个名字
+                    String name = JOptionPane.showInputDialog(this, "请输入您的姓名：");
+                    if (name != null && !name.isEmpty()) {
+                        User newUser = new User(username, password, name);
+                        allUsers.add(newUser);
+                        JOptionPane.showMessageDialog(this, "注册成功！");
+                    }
+                }
+            }
+        }
+    }
+
+    //查找用户信息
+    private User findUserByUsername(String username) {
+        for (User user : allUsers) {
+            if (user.getUsername().equals(username)) {
+                return user;
+            }
+        }
+        return null;
     }
 }

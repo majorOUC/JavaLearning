@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import wangmengzhe.bean.Employee;
 
 public class EmployeeManagementSystem extends JFrame {
     private JTextField searchField;
@@ -14,8 +16,14 @@ public class EmployeeManagementSystem extends JFrame {
     private JTable table;
     private DefaultTableModel tableModel;
 
-    public EmployeeManagementSystem() {
-        this.setTitle("员工信息管理系统");
+    //创建一个静态集合容器来存储员工信息
+    private static ArrayList<Employee> allemployee = new ArrayList<>();
+
+    public EmployeeManagementSystem(){
+    }
+
+    public EmployeeManagementSystem(String username) {
+        super("欢迎"+username+ "使用员工信息管理系统");
         this.setSize(800, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -48,11 +56,6 @@ public class EmployeeManagementSystem extends JFrame {
             }
         };
         table = new JTable(tableModel);
-
-        // 添加20个示例员工信息
-        for (int i = 1; i <= 20; i++) {
-            tableModel.addRow(new Object[]{i, "员工" + i, "职位" + i, "部门" + i});
-        }
 
         JScrollPane scrollPane = new JScrollPane(table);
 
@@ -96,61 +99,18 @@ public class EmployeeManagementSystem extends JFrame {
                 int selectedRow = table.getSelectedRow();
                 if (selectedRow != -1) {
                     int id = (int) tableModel.getValueAt(selectedRow, 0);
-                    JOptionPane.showMessageDialog(EmployeeManagementSystem.this, "当前行ID: " + id);
+                    allemployee.remove(id);
+                    JOptionPane.showMessageDialog(EmployeeManagementSystem.this, "删除成功");
                     tableModel.removeRow(selectedRow);
                 }
             }
         });
 
-//
-//        // 修改功能
-//        editMenuItem.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                int selectedRow = table.getSelectedRow();
-//                if (selectedRow != -1) {
-//                    int id = (int) tableModel.getValueAt(selectedRow, 0);
-//                    String name = (String) tableModel.getValueAt(selectedRow, 1);
-//                    String position = (String) tableModel.getValueAt(selectedRow, 2);
-//                    String department = (String) tableModel.getValueAt(selectedRow, 3);
-//
-//                    String newName = JOptionPane.showInputDialog(EmployeeManagementSystem.this, "修改姓名", name);
-//                    String newPosition = JOptionPane.showInputDialog(EmployeeManagementSystem.this, "修改职位", position);
-//                    String newDepartment = JOptionPane.showInputDialog(EmployeeManagementSystem.this, "修改部门", department);
-//
-//                    if (newName != null && newPosition != null && newDepartment != null) {
-//                        tableModel.setValueAt(newName, selectedRow, 1);
-//                        tableModel.setValueAt(newPosition, selectedRow, 2);
-//                        tableModel.setValueAt(newDepartment, selectedRow, 3);
-//                    }
-//                }
-//            }
-//        });
-//
-//        // 删除功能
-//        deleteMenuItem.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                int selectedRow = table.getSelectedRow();
-//                if (selectedRow != -1) {
-//                    tableModel.removeRow(selectedRow);
-//                }
-//            }
-//        });
 
         // 添加功能
-        addButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String name = JOptionPane.showInputDialog(EmployeeManagementSystem.this, "输入姓名");
-                String position = JOptionPane.showInputDialog(EmployeeManagementSystem.this, "输入职位");
-                String department = JOptionPane.showInputDialog(EmployeeManagementSystem.this, "输入部门");
-
-                if (name != null && position != null && department != null) {
-                    int id = tableModel.getRowCount() + 1;
-                    tableModel.addRow(new Object[]{id, name, position, department});
-                }
-            }
+        //点击添加按钮之后跳出一个新的窗口让用户输入员工信息
+        addButton.addActionListener(e -> {
+            new addEmployee(this);
         });
 
         // 搜索功能
@@ -173,5 +133,11 @@ public class EmployeeManagementSystem extends JFrame {
         this.setLayout(new BorderLayout());
         this.add(topPanel, BorderLayout.NORTH);
         this.add(scrollPane, BorderLayout.CENTER);
+    }
+
+    public void addEmployee(String text, String text1, String text2, String text3) {
+        Employee employee = new Employee(Integer.parseInt(text), text1, text2, text3);
+        allemployee.add(employee);
+        tableModel.addRow(new Object[]{employee.getId(), employee.getName(), employee.getPosition(), employee.getDepartment()});
     }
 }
