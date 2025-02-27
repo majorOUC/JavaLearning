@@ -94,9 +94,9 @@ public class addEmployee extends JFrame {
         // 添加按钮事件
         addButton.addActionListener(e -> {
             mainSystem.addEmployee(idField.getText(), nameField.getText(), positionField.getText(), departmentField.getText());
+            dispose();
             //弹出窗口提示添加成功
             JOptionPane.showMessageDialog(this, "添加成功！", "提示", JOptionPane.INFORMATION_MESSAGE);
-            dispose();
         });
 
         // 取消按钮
